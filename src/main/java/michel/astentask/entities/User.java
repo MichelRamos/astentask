@@ -64,7 +64,7 @@ public class User {
     private Set<Project> ownedProjects = new HashSet<>();
 
     //projetos que o usuario eh membro
-    @ManyToMany(mappedBy = "member")
+    @ManyToMany(mappedBy = "members")
     private Set<Project> memberProjects = new HashSet<>();
 
     //tarefas que o usuario eh responsavel

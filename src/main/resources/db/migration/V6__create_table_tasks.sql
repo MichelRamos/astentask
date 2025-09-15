@@ -4,7 +4,7 @@ CREATE TYPE task_priority AS ENUM
     ('LOW', 'MEDIUM', 'HIGH', 'URGENT');
 
 CREATE TABLE tasks(
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGSERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     status task_status NOT NULL DEFAULT 'PLANNING',
@@ -13,7 +13,7 @@ CREATE TABLE tasks(
     actual_hours INTERVAL,
     due_date TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP NULL,
     project_id BIGINT NOT NULL,
     assignee_id BIGINT,
