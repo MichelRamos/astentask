@@ -17,8 +17,8 @@ CREATE TABLE tasks(
     deleted_at TIMESTAMP NULL,
     project_id BIGINT NOT NULL,
     assignee_id BIGINT,
-    reporter_id BIGINT NOT NULL,
+    reporter_id BIGINT,
     CONSTRAINT fk_project_id FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
     CONSTRAINT fk_assignee_id FOREIGN KEY (assignee_id) REFERENCES users(id) ON DELETE SET NULL,
     CONSTRAINT fk_reporter_id FOREIGN KEY (reporter_id) REFERENCES users(id) ON DELETE RESTRICT
-)
+);
