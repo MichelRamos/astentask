@@ -3,7 +3,6 @@ package michel.astentask.entities;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -28,9 +27,9 @@ import lombok.Data;
 public class User {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, unique = true, nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -55,32 +54,32 @@ public class User {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "user_roles",
-        joinColumns = @JoinColumn(name= "user_id"),
+        joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
 
-    //usuario dono do projeto
+    //projetos que o usuario eh dono
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Project> ownedProjects = new HashSet<>();
 
-    //usuario membro do projeto
+    //projetos que o usuario eh membro
     @ManyToMany(mappedBy = "member")
     private Set<Project> memberProjects = new HashSet<>();
 
-    //usuario atribuido a tarefa
+    //tarefas que o usuario eh responsavel
     @OneToMany(mappedBy = "assignee")
     private Set<Task> assignedTasks = new HashSet<>();
 
-    //usuario que reportou a tarefa
+    //tarefas que o usuario eh reportante
     @OneToMany(mappedBy = "reporter")
     private Set<Task> reportedTasks = new HashSet<>();
 
-    //usuario que fez o comentario
+    //comentarios do usuario
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
 
-    //usuario que reportou tempo
+    //timelogs do usuario
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Timelog> timelogs = new HashSet<>();
 

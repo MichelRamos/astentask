@@ -29,10 +29,12 @@ public class Comment {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    //pertence a uma tarefa
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     private Task task;
 
+    //autor do comentario
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private User author;

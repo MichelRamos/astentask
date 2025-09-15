@@ -8,6 +8,8 @@ import java.util.Set;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import michel.astentask.enums.TaskPriority;
+import michel.astentask.enums.TaskStatus;
 
 @Entity
 @Table(name = "tasks")
@@ -34,11 +38,13 @@ public class Task {
     @Column(name = "description")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private TaskStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "priority")
-    private String priority;
+    private TaskPriority priority;
 
     @Column(name = "estimated_hours")
     private Duration estimatedHours;
@@ -55,27 +61,32 @@ public class Task {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    //pertence a um projeto
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 
+    //responsavel pela tarefa
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assignee_id")
     private User assignee;
 
+    //tem um reportante
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reporter_id")
     private User reporter;
 
+    //tem comentarios
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
 
+    //tem timelogs
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private Set<Timelog> timelogs = new HashSet<>();
 
     public Task() {}
 
-    public Task(String title, String description, String status, String priority, Duration estimatedHours,
+    public Task(String title, String description, TaskStatus status, TaskPriority priority, Duration estimatedHours,
             Duration actualHours, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt,
             Project project, User assignee, User reporter) {
         this.title = title;

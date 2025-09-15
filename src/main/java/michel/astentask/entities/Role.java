@@ -1,6 +1,8 @@
 package michel.astentask.entities;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,6 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -40,15 +43,19 @@ public class Role {
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users = new HashSet<>();
+
     public Role() {}
 
     public Role(String name, String description, 
-            LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt) {
+            LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, Set<User> users) {
         this.name = name;
         this.description = description;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.deletedAt = deletedAt;
+        this.users = users;
     }
     
 }

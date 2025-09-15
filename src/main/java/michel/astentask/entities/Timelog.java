@@ -33,10 +33,12 @@ public class Timelog {
     @Column(name = "log_date")
     private LocalDateTime logDate;
 
+    //pertence a uma tarefa
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     private Task task;
 
+    //usuario que fez o timelog
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
