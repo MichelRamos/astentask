@@ -1,6 +1,5 @@
 package michel.astentask.entities;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -25,7 +24,7 @@ public class Timelog {
     private Long id;
 
     @Column(name = "hours_worked")
-    private Duration hoursWorked;
+    private Float hoursWorked;
 
     @Column(name = "description")
     private String description;
@@ -45,7 +44,7 @@ public class Timelog {
 
     public Timelog() {}
 
-    public Timelog(Duration hoursWorked, String description, LocalDateTime logDate, Task task, User user) {
+    public Timelog(Float hoursWorked, String description, LocalDateTime logDate, Task task, User user) {
         this.hoursWorked = hoursWorked;
         this.description = description;
         this.logDate = logDate;

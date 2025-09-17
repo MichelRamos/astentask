@@ -1,6 +1,5 @@
 package michel.astentask.entities;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -47,10 +46,10 @@ public class Task {
     private TaskPriority priority;
 
     @Column(name = "estimated_hours")
-    private Duration estimatedHours;
+    private Float estimatedHours;
 
     @Column(name = "actual_hours")
-    private Duration actualHours;
+    private Float actualHours;
 
     @Column(name = "due_date")
     private LocalDateTime dueDate;
@@ -86,8 +85,8 @@ public class Task {
 
     public Task() {}
 
-    public Task(String title, String description, TaskStatus status, TaskPriority priority, Duration estimatedHours,
-            Duration actualHours, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt,
+    public Task(String title, String description, TaskStatus status, TaskPriority priority, Float estimatedHours,
+            Float actualHours, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt,
             Project project, User assignee, User reporter) {
         this.title = title;
         this.description = description;

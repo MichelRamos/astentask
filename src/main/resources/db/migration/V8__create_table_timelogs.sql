@@ -1,6 +1,6 @@
 CREATE TABLE timelogs(
     id BIGSERIAL PRIMARY KEY,
-    hours_worked INTERVAL,
+    hours_worked DECIMAL(10,2) DEFAULT 0.0,
     description TEXT,
     log_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id BIGINT NOT NULL,
