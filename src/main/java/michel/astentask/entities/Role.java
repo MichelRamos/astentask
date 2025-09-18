@@ -48,8 +48,9 @@ public class Role {
 
     public Role() {}
 
-    public Role(String name, String description, 
+    public Role(Long id, String name, String description, 
             LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, Set<User> users) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.createdAt = createdAt;

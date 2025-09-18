@@ -44,7 +44,8 @@ public class Timelog {
 
     public Timelog() {}
 
-    public Timelog(Float hoursWorked, String description, LocalDateTime logDate, Task task, User user) {
+    public Timelog(Long id, Float hoursWorked, String description, LocalDateTime logDate, Task task, User user) {
+        this.id = id;
         this.hoursWorked = hoursWorked;
         this.description = description;
         this.logDate = logDate;

@@ -41,7 +41,8 @@ public class Comment {
 
     public Comment() {}
 
-    public Comment(String content, LocalDateTime createdAt, Task task, User author) {
+    public Comment(Long id, String content, LocalDateTime createdAt, Task task, User author) {
+        this.id = id;
         this.content = content;
         this.createdAt = createdAt;
         this.task = task;

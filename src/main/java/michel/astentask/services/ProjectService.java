@@ -9,8 +9,8 @@ import michel.astentask.dtos.response.ProjectResponse;
 
 public interface ProjectService {
 
-    ResponseEntity<ProjectResponse> createProject(ProjectRequest body, String name);
+    ResponseEntity<ProjectResponse> createProject(ProjectRequest body, String email);
 
-    Page<ProjectResponse> findUserProjects(Pageable pageable, String name);
+    Page<ProjectResponse> findUserProjects(Pageable pageable, String email);
     
 }

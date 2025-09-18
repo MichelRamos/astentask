@@ -34,9 +34,9 @@ public class ProjectController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
-        String name = user.getName();
+        String email = user.getEmail();
 
-        ResponseEntity<ProjectResponse> projectResponse = projectService.createProject(body, name);
+        ResponseEntity<ProjectResponse> projectResponse = projectService.createProject(body, email);
 
         return projectResponse;
     }
@@ -45,9 +45,9 @@ public class ProjectController {
     @GetMapping()
     public Page<ProjectResponse> getUserProjects(
             @PageableDefault(page = 0, size = 10) Pageable pageable,
-            String name) {
+            String email) {
 
-                Page<ProjectResponse> projects = projectService.findUserProjects(pageable, name);
+                Page<ProjectResponse> projects = projectService.findUserProjects(pageable, email);
 
         return projects;
     }

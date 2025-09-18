@@ -85,9 +85,10 @@ public class Task {
 
     public Task() {}
 
-    public Task(String title, String description, TaskStatus status, TaskPriority priority, Float estimatedHours,
+    public Task(Long id, String title, String description, TaskStatus status, TaskPriority priority, Float estimatedHours,
             Float actualHours, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt,
             Project project, User assignee, User reporter) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;

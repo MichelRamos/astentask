@@ -76,8 +76,10 @@ public class Project {
 
     public Project() {}
 
-    public Project(String name, String description, ProjectStatus status, User owner, Set<User> members, Set<Task> tasks,
+    public Project(Long id, String name, String description, ProjectStatus status, User owner, Set<User> members, Set<Task> tasks,
             LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt) {
+        super();
+        this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
@@ -87,6 +89,6 @@ public class Project {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.deletedAt = deletedAt;
-    }
+    }    
 
 }
