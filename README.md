@@ -1,4 +1,4 @@
-Desafio Tecnico Backend Asten.
+Desafio Técnico Backend Asten.
 Instruções para executar o backend:
 - clonar repositorio.
 - navegar até a pasta raiz do projeto e executar o comando "docker compose up --build".
