@@ -41,7 +41,6 @@ public class ProjectServiceImpl implements ProjectService {
     private ModelMapper modelMapper;
 
     @Override
-    @Transactional
     public ResponseEntity<ProjectResponse> createProject(ProjectRequest body, String email) {
         
         User owner = userRepository.findByEmail(email)
